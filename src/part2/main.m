@@ -1,18 +1,20 @@
+
+% الف
 I = imread("resources/Noisy_Pic.png");
 
 [~, ~, channels] = size(I); 
 disp(['N_Channels:', num2str(channels)]);
 
+% ب
 imshow(I);
 
-
-
+% و
 mask_sizes = [3, 5, 7, 9];
 
 figure;
 subplot(2,3,1);
 imshow(I);
-title('Original Noisy Image');
+title('Noisy IMG');
 
 best_filtered_I = I; 
 
@@ -29,8 +31,6 @@ for i = 1:length(mask_sizes)
     end
 end
 
-fig_output_path = "resources/MaskComparison.fig";  
-savefig(fig_output_path);  
-
-output_path = "resources/Filtered_Image.png";
-imwrite(best_filtered_I, output_path);
+figure;
+imshow(best_filtered_I);
+title('Best Filtered (5x5)');
