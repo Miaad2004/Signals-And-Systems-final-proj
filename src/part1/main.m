@@ -73,6 +73,30 @@ sound(Filtered_Sound, Fs);
 audiowrite("Resources\Filtered_Sound.wav", Filtered_Sound, Fs);
 
 % ط
+Y_noisy = fft(y);
+Y_noisy_shifted = fftshift(Y_noisy);
+magnitude_noisy = abs(Y_noisy_shifted);
 
+Y_filtered = fft(Filtered_Sound);
+Y_filtered_shifted = fftshift(Y_filtered);
+magnitude_filtered = abs(Y_filtered_shifted);
+
+f_axis = linspace(-Fs/2, Fs/2, N);
+
+figure;
+
+subplot(2,1,1); 
+plot(f_axis, magnitude_noisy, 'r'); 
+xlabel('Frequency (Hz)');
+ylabel('Magnitude');
+title('Magnitude Spectrum of Noisy Signal');
+grid on;
+
+subplot(2,1,2);
+plot(f_axis, magnitude_filtered, 'b');
+xlabel('Frequency (Hz)');
+ylabel('Magnitude');
+title('Magnitude Spectrum of Filtered Signal');
+grid on;
 
 
