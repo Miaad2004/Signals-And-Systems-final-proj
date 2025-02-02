@@ -37,6 +37,7 @@ title('Impulse Response');
 grid on;
 
 % و
+% Plot Freq  response
 N_filter = 1024; 
 H = fft(Num, N_filter);  
 H_shifted = fftshift(H); 
@@ -51,9 +52,17 @@ ylabel('Magnitude');
 title('Frequency Response');
 grid on;
 
-% To Dos: Find Cutoff Freq in digital (big OMEGA in oppenhime book)
-% To Dos: Find Cutoff Freq in analog (f in oppenhime book)
-% To DO: omapre the result with design specifications above
+% findin cutoff freq
+cutoff_thresh = max(H_magnitude) / 2;
+
+idx_positive = find(f_filter >= 0);
+positive_H = H_magnitude(idx_positive);
+positive_f = f_filter(idx_positive);
+
+cutoff_idx = find(positive_H <= cutoff_thresh, 1, 'first');
+
+cutoff_freq = positive_f(cutoff_idx);
+disp(['cutoff frequency: ', num2str(cutoff_freq), ' Hz']);
 
 
 % ز
