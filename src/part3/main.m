@@ -23,7 +23,7 @@ bitsPerPixel = 8 * numel(I) / (rows * cols);
 fprintf('Bits per pixel= %.2f\n', bitsPerPixel);
 
 % ج
-quantLevels = [64,33,16,8,4,2];
+quantLevels = [64,32,16,8,4,2];
 nBits = [6,5,4,3,2,1];
 
 figure;
